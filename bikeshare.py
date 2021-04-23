@@ -87,7 +87,7 @@ def get_filters():
 
 
     #asks the user if they would like to change their selections
-    
+
     while True:
         reselect = input('\nWould you like to make a different selection? Enter yes or no.\n').lower()
         if reselect != 'yes' and reselect != 'no':
@@ -242,6 +242,10 @@ def trip_duration_stats(df):
     #display mean travel time
     mean_travel_time = df['Trip Duration'].mean()
     print('Average travel time: {}s '.format(mean_travel_time))
+
+    #display maximum travel time
+    max_travel_time = df['Trip Duration'].max()
+    print('Maximum travel time: {}s '.format(max_travel_time))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
