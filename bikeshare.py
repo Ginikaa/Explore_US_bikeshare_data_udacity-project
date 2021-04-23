@@ -23,28 +23,28 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('\nHello! Let\'s explore some US bikeshare data!')
-    
+
     #get the user input for city (chicago, new york city, washington)
     cities = {'1':'chicago', '2':'new york city', '3': 'washington'}
     while True:
         try:
-            city_num = input('\nWhich City from the options below do you wish to explore? Enter 1 for Chicago, 2 for New York...\n1.Chicago\n2.New York City\n3.Washington\n')           
+            city_num = input('\nWhich City from the options below do you wish to explore? Enter 1 for Chicago, 2 for New York...\n1.Chicago\n2.New York City\n3.Washington\n')
             if city_num not in cities:
                 raise ValueError('Oops! Invalid City')
             break
         except ValueError as ve:
             print(ve)
-        
+
     print('Good choice!You have selected {}'.format(cities[city_num]))
     city = cities[city_num]
-    
-    
-    
+
+
+
     #get user input for the month to be explored (all, january, february, ... , june)
     Months = { '1': 'January', '2': 'February', '3': 'March', '4': 'April', '5': 'May', '6': 'June', '7': 'ALL'}
     while True:
         try:
-            month_num = input('\nPlease select a month to explore by inputting a number between 1 and 6 where the numbers represent January to June respectively. Input 7 if you do not want to explore a particular month: ')        
+            month_num = input('\nPlease select a month to explore by inputting a number between 1 and 6 where the numbers represent January to June respectively. Input 7 if you do not want to explore a particular month: ')
             if month_num not in Months:
                 raise ValueError('Oops! Invalid month')
             break
@@ -55,13 +55,13 @@ def get_filters():
     else:
         print('You have selected:',Months[month_num])
     month = Months[month_num]
-        
-      
+
+
     #get user input for the day of the week to be explored (all, monday, tuesday, ... sunday)
     Days = { '1': 'Sunday', '2': 'Monday', '3': 'Tuesday', '4': 'Wednesday', '5': 'Thursday', '6': 'Friday', '7': 'Saturday', '8':'ALL'}
     while True:
         try:
-            day_num =input('\nPlease select the day of the week you wish explore by inputting a number between 1 and 7 where the numbers represent Sunday to Saturday respectively. Input 8 if you do not want to explore a particular day: ')            
+            day_num =input('\nPlease select the day of the week you wish explore by inputting a number between 1 and 7 where the numbers represent Sunday to Saturday respectively. Input 8 if you do not want to explore a particular day: ')
             if day_num not in Days:
                 raise ValueError('Oops! Invalid day')
             break
@@ -72,9 +72,9 @@ def get_filters():
     else:
         print('You have selected:',Days[day_num])
     day = Days[day_num]
-    
-    
-    
+
+
+
     #display the selections made
     if month_num!='7' and day_num != '8':
         print('\nThanks for your selections!You have chosen to explore {} in the month of {} for {}'.format(day, month, city.title()))
@@ -84,27 +84,27 @@ def get_filters():
         print('\nThanks for your selections!You have chosen to explore the month of {} for {}'.format(month, city.title()))
     elif month_num == '7' and day_num == '8':
         print('\nThanks for your selections!You have chosen to explore {}'.format(city.title()))
-    
-    
+
+
     #asks the user if they would like to change their selections
-    
+
     while True:
-        reselect = input('\nWould you like to change your selections? Enter yes or no.\n').lower()
+        reselect = input('\nWould you like to make a different selection? Enter yes or no.\n').lower()
         if reselect != 'yes' and reselect != 'no':
             print('Oops! invalid input')
             continue
         elif reselect == 'yes':
-            get_filters()                    
+            get_filters()
         else:
-            break 
+            break
         break
-                
-            
-            
-        
 
-            
-                                             
+
+
+
+
+
+
     print('-'*40)
     return city, month, day
 
@@ -122,7 +122,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
-    
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -154,26 +154,26 @@ def display_raw_data(df):
     Displays 5 random rows if user enters yes until the user enters no
 
     """
-    
-    #get user input to determine if the user wants to display 5 random rows of data 
+
+    #get user input to determine if the user wants to display 5 random rows of data
     while True:
         try:
             display = input('\nPlease enter yes if you wish to see 5 random rows of the data you want to explore and no if you dont: ').lower()
             if display == 'yes':
                 print(df.sample(n = 5))
-                
+
             elif display == 'no':
                 break
             else:
                 raise ValueError('Oops! invalid input')
-            
-            
+
+
         except ValueError as ve:
             print(ve)
-            
-        
-        
-        
+
+
+
+
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -211,7 +211,7 @@ def station_stats(df):
     #Dsiplay most commonly used start station
     most_common_startstation = df['Start Station'].mode()[0]
     print('Most Commonly Used Start Station: ', most_common_startstation)
-    
+
 
 
     #display most commonly used end station
@@ -243,6 +243,10 @@ def trip_duration_stats(df):
     mean_travel_time = df['Trip Duration'].mean()
     print('Average travel time: {}s '.format(mean_travel_time))
 
+    #display maximum travel time
+    max_travel_time = df['Trip Duration'].max()
+    print('Maximum travel time: {}s '.format(max_travel_time))
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -259,22 +263,22 @@ def user_stats(df, city):
     print('Count of each user type:\n{}'.format(user_types))
 
 
-    #display counts of gender   
+    #display counts of gender
     if city != 'washington':
         gender_count = df['Gender'].value_counts()
         print('\n\nCount of each gender:\n{}'.format(gender_count))
-             
+
 
     #display earliest, most recent, and most common year of birth
     if city != 'washington':
         #display earliest year of birth
         earliest_birth = df['Birth Year'].min()
         print('\n\nEarliest Birth Year:',int(earliest_birth))
-        
+
         #display most recent year of birth
         latest_birth = df['Birth Year'].max()
         print('Most Recent Birth Year:',int(latest_birth))
-    
+
         #display most common year of birth
         most_common_birth = df['Birth Year'].mode()[0]
         print('Most Common Birth Year:',int(most_common_birth))
@@ -293,7 +297,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df, city)
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
