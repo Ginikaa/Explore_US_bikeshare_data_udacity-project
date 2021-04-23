@@ -22,7 +22,7 @@ new_york_city.csv\
 washington.csv
 
 ### Credits
-https://stackoverflow.com/\
-https://pandas.pydata.org/docs/\
-https://docs.python.org/3/\
+https://stackoverflow.com/ \
+https://pandas.pydata.org/docs/ \
+https://docs.python.org/3/ \
 Udacity Programming for Data Science with Python
