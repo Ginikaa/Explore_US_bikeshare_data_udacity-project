@@ -16,13 +16,13 @@ Thanks to the rise in information technologies, it is easy for a user of the sys
 In this project, data provided by Motivate, a bike share system provider for many major cities in the United States, was used to provide descriptive statistics for a bike share system provider for Chicago, New York City or Washington, depending on the user inputs, inorder to uncover bike share usage patterns.
 
 ### Files used
-bikeshare.py
-chicago.csv
-new_york_city.csv
+bikeshare.py\
+chicago.csv\
+new_york_city.csv\
 washington.csv
 
 ### Credits
-https://stackoverflow.com/
-https://pandas.pydata.org/docs/
-https://docs.python.org/3/
+https://stackoverflow.com/\
+https://pandas.pydata.org/docs/\
+https://docs.python.org/3/\
 Udacity Programming for Data Science with Python
