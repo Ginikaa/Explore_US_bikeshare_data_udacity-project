@@ -22,4 +22,7 @@ new_york_city.csv
 washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+https://stackoverflow.com/
+https://pandas.pydata.org/docs/
+https://docs.python.org/3/
+Udacity Programming for Data Science with Python
