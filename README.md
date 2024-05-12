@@ -13,7 +13,7 @@ Over the past decade, bicycle-sharing systems have been growing in number and po
 
 Thanks to the rise in information technologies, it is easy for a user of the system to access a dock within the system to unlock or return bicycles. These technologies also provide a wealth of data that can be used to explore how these bike-sharing systems are used.
 
-In this project, data provided by Motivate, a bike share system provider for many major cities in the United States, was used to provide descriptive statistics for a bike share system provider for Chicago, New York City or Washington, depending on the user inputs, inorder to uncover bike share usage patterns.
+In this project, data provided by Motivate, a bike share system provider for many major cities in the United States, was used to create an interactive dashboard to provide descriptive statistics for a bike share system provider for Chicago, New York City or Washington, depending on the user inputs, inorder to uncover bike share usage patterns.
 
 ### Files used
 bikeshare.py\
